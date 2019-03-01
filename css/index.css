@@ -1,0 +1,181 @@
+.wrap{
+  border: 1px solid black;
+}
+
+.header{
+}
+.header img{
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+}
+.menu{
+  border: 1px solid red;
+  background: #EEE9E9;
+}
+.menu p {
+  margin: 0px;
+  padding-top: 5px;
+  color: white;
+  
+}
+.menu .control{
+  display: inline-block;
+}
+.login{
+  float: right;
+  margin-right: 50px;
+}
+.menu .login a{
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+.menu .login li{
+   line-height: 2;
+   position: relative;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+.menu .login .choosemanager{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        background-color: #eee;
+        padding:0px;
+        width:150px; 
+}
+.menu .login li:hover>.choosemanager{
+        display: block; 
+    }
+ 
+.menu .login>li>.choosemanager{
+        top: 40px;
+        left: 0;
+    }
+.menu .login .choosemanager a{
+  display: block;
+  text-decoration: none
+}
+.menu .login .choosemanager li{
+  width:100%;
+  padding: 0px;
+  margin-top: 5px;
+  display: inline-block;
+  list-style-type: none;
+}
+.menu li{
+  display: inline-block;
+  width: 150px;
+  background: blue;
+  line-height: 2;
+  text-align: center;
+}
+
+.menu .control li{
+  list-style-type: none;
+  border-radius: 10px;
+  
+}
+.menu .control a{
+  text-decoration: none;
+  color: white;
+}
+.content{
+
+}
+.page{
+  clear: both;
+}
+.content .right{
+  width:79%;
+  float: right;
+  border: 1px solid green;
+}
+
+.content .right a{
+  text-decoration: none;
+}
+.content .right li{
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  list-style-type: none;
+}
+
+.content .left{
+  width: 20%;
+  height: 500px;
+  float: left;
+}
+.sanphamall {
+  width: 17%;
+  border: 1px solid black;  
+  float: left;  
+  margin: 6px 19px;
+  text-align: center
+}
+.sanphamall img
+{
+  width: 150px;
+  height: 220px;
+}
+.sanphamall p,a{
+  margin:5px 0 0 0 ;
+  padding: 0px;
+}
+.chitietsanpham{
+  text-align: center;
+  border: 1px solid aqua;
+}
+.chitietsanpham table{
+  width: 50%;
+  margin: 10px auto;
+  text-align: left;
+  
+}.page{
+  text-align: center;
+}
+.page a{
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 2;
+  margin: 0px 0 0 5px;
+  padding:0px;
+  border: 1px solid #000000;
+  color: white;
+  background-color: blue;
+  width: 40px;
+  height: 25px;
+}
+.page .currentNumber{
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 2;
+  margin: 0px;
+  padding:0px;
+  border: 1px solid #000000;
+  color: white;
+  background-color: cyan;
+  width: 40px;
+  height: 25px;
+}
+.giohang table{
+  table-layout: fixed;
+  width: 80%;
+  margin: 10px auto;
+  text-align: left;
+}
+.giohang img{
+  width: 100px;
+  height: auto;
+  
+}
+.footer .info{
+  clear: both;
+  margin-left: 20px;
+  background: #64FE2E;
+}
