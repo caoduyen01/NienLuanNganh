@@ -1,3 +1,42 @@
+<script type="text/javascript">
+	function notice(){
+		alert('Đăng nhập trước khi thanh toán');
+	}
+	function accept(id){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				alert(this.responseText);
+			}
+		}
+		xhttp.open("Get","xuly/thanhtoan.php?idcart="+id,true);
+		xhttp.send();
+	}
+	//kiem tra neu co gio hang thì gọi ajax xử lý không thì thông báo ko có giỏ hàng 
+
+	function pay(){
+		<?php 
+		if(isset($_SESSION['name'])){
+			include_once("xuly/connection.php");
+		 	echo "var isPay = 1;";
+		 	$account = connectTakeQuery("select * from account where username = '".$_SESSION['name']."' ");
+		 	$idAcc = $account->fetch_assoc();
+		 	echo "var id = ".$idAcc['id'].";";
+		 } 
+		 else {
+		 	echo "var isPay = 0;";
+		 }
+	 ?>
+		if(isPay == 1 ){
+			accept(id);
+		}
+		else{
+			notice();
+		}
+	}
+
+
+</script>
  <div class="giohang">
 	<table>
 		<tr>
@@ -24,7 +63,7 @@
 						echo		"<td>".$product['amount']."</td>";
 						echo		"<td>".$product['price']."</td>";
 						echo		"<td>".$product['amount']*$product['price']."</td>";
-						echo		"<td>+</td>";
+						echo		"<td></td>";
 						echo		"<td>-</td>";
 						echo		"<td>X</td>";
 						echo	"</tr>";
@@ -40,7 +79,7 @@
 							echo		"<td>".$products['qty']."</td>";
 							echo		"<td>".$products['price']."</td>";
 							echo		"<td>".$products['qty']*$products['price']."</td>";
-							echo		"<td>+</td>";
+							echo		"<td></td>";
 							echo		"<td>-</td>";
 							echo		"<td>X</td>";
 							echo	"</tr>";
@@ -49,10 +88,17 @@
 
 					else {
 						echo	"<p>Giỏ hàng trống</p>";
+							
 					}
 				}
-			?>
-		
+			
+			echo "<tr>";
+			echo	"<td colspan='2'><button id = 'accept' onclick='pay()'>Thanh Toán</button></td>";
+			echo "</tr>"
+		?>
 	</table>
 </div> 
+
+
+
 

@@ -5,7 +5,7 @@
 			include_once('C:xampp/htdocs/ban_hang/xuly/connection.php');
 			$result = connectTakeQuery("select * from product order by views DESC");
 
-			for ($i=0; $i < 4 ; $i++) { 
+			for ($i=0; $i < 5 ; $i++) { 
 				$row  = $result->fetch_assoc();
 				echo "<div class='sanphamall'>"				
 				."	<img src='".$row['picture']."'>

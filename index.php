@@ -3,19 +3,15 @@
 <head>
 	<title>Web bán hàng Cao Duyên </title>
 	<meta charset="utf-8">
-</head>
-<body>
-	<!DOCTYPE html>
-<html>
-<head>
-	<title>Web bán hàng Di động Di Dong Nhanh</title>
-	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 </head>
 <body>
 	<?php 
 		session_start();
+		if(!isset($_SESSION['url']['index']))
+			$_SESSION['url']['index'] = base64_encode($_SERVER['REQUEST_URI']);
+			
 	 ?>
 	<div class="wrap">
 		<?php 

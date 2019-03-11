@@ -1,4 +1,4 @@
 
 	<div class="header">
-			<h1>Trang Quản lý sản phẩm</h1>
+			<h1>Quản lý website</h1>
 	</div>

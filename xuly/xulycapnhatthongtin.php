@@ -11,7 +11,7 @@ session_start();
 	$IDaccount = $getIDaccount->fetch_assoc();
 	
 	// cần xử lý 
-		$sql = "UPDATE `khachhang` SET fullname= '$fullname',phone='$phone',email='$email',address='$address' WHERE idacount = '".$IDaccount['id']."'";
+		$sql = "UPDATE `khachhang` SET fullname= '$fullname',phone='$phone',email='$email',address='$address' WHERE idaccount = ".$IDaccount['id']."";
 	connect()->query($sql);
  	header( "Location: /ban_hang/index.php?capnhatthongtin" );
  ?>

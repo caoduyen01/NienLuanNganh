@@ -1,23 +1,21 @@
-<div class="register">
- <form action="xuly/xulydangky.php" method="post" onsubmit ="return checkinfo()">
+ <form action="xulyadmin/themKH.php" method="post" onsubmit ="return checkinfo()">
+   <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
   <table>
     <tr>
-      <div align="center"><h1>Đăng ký</h1></div>
+      <div align="center"><h1>Thông tin thành viên</h1></div>
     </tr>
     <tr>
-      <td><label>Tên tài khoản:</label></td>
-      <td><input type="text" name="username" id="username" onchange="checktk()"></td>
+      <td><label>Tài khoản:</label></td>
+      <td><input type="text" name="username" id="username" onchange="checkuser()"></td>
     </tr>
-    <tr id="rowus" class="error">
-      <td></td>
+    <tr id="rowus">
       <td ><span id="errus"></span></td>
     </tr>
     <tr>
       <td><label>Mật khẩu:</label></td>
       <td><input type="password" name="password" id="password" onchange="checkmk1()"></td>
     </tr>
-    <tr id="rowpw" class="error">
-      <td></td>
+    <tr id="rowpw">
       <td ><span id="errpw"></span></td>
     </tr>
 
@@ -25,8 +23,7 @@
       <td><label>Nhập Lại mật khẩu:</label></td>
       <td><input type="password" name="confirm" id="confirm" onchange="checkmk2()"></td>
     </tr>
-    <tr id="rowcf" class="error">
-      <td></td>
+    <tr id="rowcf">
       <td ><span id="errcf"></span></td>
     </tr>
     
@@ -34,40 +31,45 @@
       <td><label>Họ và tên:</label></td>
       <td><input type="text" name="fullname" id="fullname" onchange="checktk()"></td>
     </tr>
-    <tr id="rowfn" class="error">
-      <td></td>
+    <tr id="rowfn">
       <td ><span id="errfn"></span></td>
     </tr>
-
+    <tr>
+      <td><label>Họ và tên:</label></td>
+      <td><select name="level">
+          <option value="0">0</option>
+          <option value="1">1</option>
+      </select></td>
+    </tr>
      <tr>
       <td><label>email:</label></td>
       <td><input type="email" name="email" id="email" onchange="checktk()"></td>
     </tr>
-    <tr id="rowus" class="error">
-      <td></td>
-      <td ><span id="errus" ></span></td>
+    <tr id="rowus">
+      <td ><span id="errus"></span></td>
     </tr>
 
     <tr>
       <td><label>Số điện thoại:</label></td>
       <td><input type="text" name="phone" id="phone" onchange="checkphone()"></td>
     </tr>
-    <tr id="rowp" class="error">
-      <td></td>
+    <tr id="rowp">
       <td ><span id="errp"></span></td>
     </tr>
     <tr>
       <td><label>Địa chỉ</label></td>
-      <td><textarea name="address" id="address" onchange="checkadress()" rows="5" cols="50" style="resize: none;"></textarea></td>
+      <td><textarea name="address" id="address" onchange="checkadress()"></textarea></td>
     </tr>
-    <tr id="rowad" class="error">
-      <td></td>
+    <tr id="rowad">
       <td ><span id="errad"></span></td>
     </tr>
-    <td colspan="2"><div align="center"><input type="submit" name="submit" value="Đăng ký"></div></td>
+    <?php echo '<input type="hidden" name="return_url" value="'.$current_url.'" />'; ?>
+    <td><div align="center">
+        <input type="submit" name="add" value="Thêm mới">
+        <input type="submit" name="update" value="Cập nhật">
+    </div></td>
   </table>
 </form>
-</div>
 <script>
         var a,b,c,d;
         var regextk=/^[A-Za-z][A-Za-z0-9]{4,14}$/;

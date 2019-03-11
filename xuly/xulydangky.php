@@ -12,9 +12,17 @@
 	$conn = connect();
 	
 	// cần xử lý 
-		$sql = "insert into account(username,password,level) values"
-				."('$name','$password',$level)";
+	$sql = "insert into account(username,password,level) values"
+			."('$name','$password',$level)";
 	$conn->query($sql);
- 	header( "Location: /ban_hang/index.php?dangky" );
+
+	$sqlGetIDAccount = "select id from account where username = '$name'";
+	$account = connectTakeQuery($sqlGetIDAccount);
+	$IdAccount = $account->fetch_assoc();
+	$sqlAddKH = "insert into khachhang(fullname,phone,email,address,idaccount) values"
+			."('$fullname','$phone','$email','$address',".$IdAccount['id'].")";
+	$conn->query($sqlAddKH);
+	$conn->close();
+ 	header( "Location: /ban_hang/index.php?xem=dangky" );
 	
  ?>

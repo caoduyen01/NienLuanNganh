@@ -1,5 +1,5 @@
 .wrap{
-  border: 1px solid black;
+  
 }
 
 .header{
@@ -10,7 +10,6 @@
   background-size: cover;
 }
 .menu{
-  border: 1px solid red;
   background: #EEE9E9;
 }
 .menu p {
@@ -21,6 +20,7 @@
 }
 .menu .control{
   display: inline-block;
+  float: left;
 }
 .login{
   float: right;
@@ -70,7 +70,12 @@
   width: 150px;
   background: blue;
   line-height: 2;
+  box-shadow: 5px 5px 1px gray;
   text-align: center;
+  border: 2px solid white;
+}
+.menu li:hover{
+  background: #000000;
 }
 
 .menu .control li{
@@ -81,9 +86,61 @@
 .menu .control a{
   text-decoration: none;
   color: white;
+  display: block
+}
+.menu  .control img{
+  width: 20px;
+  height: 20px;
+  
+}
+.menu .control #giohang{
+  background: red;
+}
+
+.control{
+  float: right;
+  margin-right: 50px;
+}
+.menu .control a{
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+.menu .control li{
+   line-height: 2;
+   position: relative;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+.menu .control .choosemanager{
+        display: none;
+        position: absolute;
+        top: 40;
+        left: 0;
+        background-color: #eee;
+        padding:0px;
+        width:150px; 
+}
+.menu .control li:hover>.choosemanager{
+        display: block; 
+    }
+ .menu .controln>li>.choosemanager{
+        top: 40px;
+        left: 0;
+    }
+.menu .control .choosemanager a{
+  display: block;
+  text-decoration: none
+}
+.menu .control .choosemanager li{
+  width:100%;
+  padding: 0px;
+  margin-top: 5px;
+  display: inline-block;
+  list-style-type: none;
 }
 .content{
-
+  clear:both;
 }
 .page{
   clear: both;
@@ -109,9 +166,28 @@
   height: 500px;
   float: left;
 }
+.register table input{
+  width:300px;
+  font-size: 18px;
+}
+.register table input[type="submit"]{
+  text-align: center;
+  width:100px;
+  padding: 5px 10px;
+  text-align: center;
+  box-shadow: 2px 6px 2px grey;
+  border-radius: 5px; 
+}
+.register table{
+  width: 50%;
+  text-align: left;
+  margin: 10px auto;
+}
+.register .error{
+  color: red;
+}
 .sanphamall {
-  width: 17%;
-  border: 1px solid black;  
+  width: 17%; 
   float: left;  
   margin: 6px 19px;
   text-align: center
@@ -174,8 +250,31 @@
   height: auto;
   
 }
+.updateuser {
+  width: 50%;
+  margin: 10px auto;
+}
+.updateuser table{
+  margin: auto;
+}
+.updateuser table input[type="submit"]{
+  padding:5px 10px;
+  font-size: 20px;
+  box-shadow: 2px 5px 2px gray;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.updateuser table span{
+  color: red;
+}
+
+.content .intro{
+  width: 80%;
+  margin: 10px auto;
+}
 .footer .info{
   clear: both;
-  margin-left: 20px;
+  padding:20px;
   background: #64FE2E;
+  width: 100%;
 }

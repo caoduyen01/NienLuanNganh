@@ -67,8 +67,8 @@
 			<tr>
 				<td><label>Đơn vị: </label></td>
 				<td><select name="unit" id="unit">
-					<option>kg</option>
-					<option>Hộp</option>
+					<option value="Kg">kg</option>
+					<option value="Hộp">Hộp</option>
 				</select></td>
 			</tr>
 			<tr id="rowunit">

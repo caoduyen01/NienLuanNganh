@@ -1,7 +1,14 @@
 
  <?php 
-	include_once "xuly/connection.php";
-	$sql = "select * from product";
+		include_once "xuly/connection.php";
+function sanpham($idcate,$isHave){
+	if ($isHave == false) {
+		$sql = "select * from product";
+	}
+	else{
+		$sql = "select * from product,category where product.idcategrory =category.id AND category.id=$idcate";
+	}
+	
 	$result = connectTakeQuery($sql);
 	$count = $result->num_rows;
 	//trang  hien tai
@@ -15,7 +22,12 @@
 		$currentPage = 1;
 	}
 	$start = ($currentPage - 1) * $limit;
-	$product = connectTakeQuery("select * from product LIMIT $start,$limit");
+	if($isHave == false){
+		$product = connectTakeQuery("select * from product LIMIT $start,$limit ");
+	}
+	else{
+	$product = connectTakeQuery("select product.id as 'id',product.picture as 'picture',product.name as 'name',product.price as 'price' from product,category where product.idcategrory = category.id AND category.id=$idcate LIMIT $start,$limit");
+	}
 	while($row = $product->fetch_assoc()){
 		echo "<div class='sanphamall'>"				
 				."	<img src='".$row['picture']."'>
@@ -24,14 +36,9 @@
 					<a href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."'>Chi tiết</a><br>
 					<a href='xuly/xulygiohang.php?id=".$row['id']."'>Thêm vào giỏ hàng </a>
 				</div>";
-
 	}
-
-
-
- ?>
-  <div class="page">
-           <?php 
+echo '<div class="page">';
+          
             if ($currentPage > 1 && $totalPage > 1){
                 echo '<a href="index.php?page='.($currentPage-1).'">Prev</a>';
             }
@@ -46,5 +53,8 @@
             if ($currentPage < $totalPage && $totalPage > 1){
                 echo '<a href="index.php?page='.($currentPage+1).'">Next</a> ';
             }
-           ?>
-        </div>
+        
+echo "</div>";
+}   
+
+?>

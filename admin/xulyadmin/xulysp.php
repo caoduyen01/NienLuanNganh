@@ -38,10 +38,14 @@
 		$sqlAddProduct = "insert into product(name, picture, picturelist, price, idcategrory,idproperties) values ('$name','$picture',1,$price,".$getIDType['id'].",".$IDPro['id'].")";
 			move_uploaded_file($_FILES['picture']['tmp_name'], $store);
 		$con->query($sqlAddProduct);
+		$con->close();
 	}
 	else if(isset($_POST['update'])){
-		$sqlUpdateProduct = "UPDATE `product` SET `name`='$name',`picture`='$picture',`picturelist`=1,`price`='$price',`idcategrory`=".$getIDType['id'].",`idproperties`=".$IDPro['id'].",WHERE 1";
+		$sqlUpdateProduct = "UPDATE product,properties,category SET product.name='$name',`picture`='$picture',properties.xuatxu = '$origanal',`picturelist`=1,`price`=$price,`idcategrory`=".$getIDType['id'].",`idproperties`=".$IDPro['id']." where properties.series = '$series' and properties.id = product.idproperties AND category.id = product.idcategrory";
+		$con->query($sqlUpdateProduct);
+		$con->close();
 	}
+	
 	header('Location:'.$return_url);
 
  ?>

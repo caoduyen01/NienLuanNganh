@@ -16,13 +16,14 @@
 .menu li{
   list-style-type: none;
   display: inline-block;
-  width: 100px;
+  width: 200px;
   background: blue;
   line-height: 2;
   text-align: center;
   font:  Helvetica, arial, serif, sans serif;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px; 
+  box-shadow: 3px 5px 2px;
+  border:2px solid white; 
 }
 .menu li a{
   text-decoration: none;
@@ -32,9 +33,10 @@
 .content{
   width: 90%;
   margin: 10px auto;
+  height: 1000px;
 }
 .aleft{
-  width: 44%;
+  width: 100%;
   float: left;
  
 }
@@ -76,4 +78,7 @@
 .aright form table input[type="submit"]:hover{
   background: blue;
   color: white;
+}
+.aright form table textarea{
+  width:200px;
 }
