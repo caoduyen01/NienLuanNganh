@@ -10,11 +10,17 @@
 
 		// neu co tai khoan them vao csdl khong thi them vao session
 	if(isset($_SESSION['name'])){
+		// kiem tra neu co san pham thi update csdl ko thì thêm mới;
+		$cart = CountRowDb("select * from cart where idproduct = $sanpham ");
 		$name = $_SESSION['name'];
 		$account = connectTakeQuery("select * from account where username = '$name'");
 		$idAccount = $account->fetch_assoc(); 
-		$sqlAddCart= "insert into cart(idproduct,idaccount,amount) values($sanpham,".$idAccount['id'].",1) ";
-		$account = connectTakeQuery($sqlAddCart);
+		if($cart > 0){
+			$sqlUpdateCart = "update cart set amount=amount+1 where idproduct=$sanpham and idaccount =".$idAccount['id'];
+		}else{
+		$sqlUpdateCart = "insert into cart(idproduct,idaccount,amount,price) values($sanpham,".$idAccount['id'].",1,".$product['price'].") ";
+		}
+		$account = connectTakeQuery($sqlUpdateCart);
 	}
 	else{
 		if(!isset($_SESSION['cart']) || $_SESSION['cart'] == null ){
@@ -35,32 +41,5 @@
 		}
 	}
 	//echo array_key_exists($sanpham, $listproduct);
-	echo "<pre>";
-	print_r($_SESSION['cart']);
-	echo "<br>";
-	echo"</pre>";
 	header("Location:/ban_hang/index.php?xem=giohang");
-
-/*	
-	if(isset($_SESSION['username'])){
-		$name = $_SESSION['username'];	
-		$sql = "select id from account where username = $name";
-		$result = connectTakeQuery($sql);
-		$idnguoidung = $result1->fetch_assoc();
-		$id = $idnguoidung['id'];
-		$query = " insert into giohang(idsanpham,soluong,idnguoidung) values($sanpham,1,$id)";
-	}
-	else {
-		
-	}
-
-	// kiểm tra nếu có session thì truy cập csdl hiển thị lên, không thì dựa vao listproduct hiển thị thông tin  
-	if(isset($_SESSION['username'])){
-		$sql = "select product.name as 'tensp' from product,cart,account where product.id = cart.id";
-		$result = connectTakeQuery($sql);
-		echo "<div>
-
-
-		</div>";
-	}*/
  ?>

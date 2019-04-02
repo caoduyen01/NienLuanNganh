@@ -5,108 +5,110 @@
 			  ."khachhang.phone as 'phone',khachhang.email as 'email',khachhang.address as 'address'"
 			  ." FROM account,khachhang where account.id = khachhang.idaccount ";
 		$result = connectTakeQuery($sql);
-	 ?>
-<form action=""  method="POST">
-<table>
-	<tr class="row-customer">
-		<th>Tên TK</th>
-		<th>Mật Khẩu</th>
-		<th>mức TK</th>
-		<th>Họ tên</th>
-		<th>SĐT</th>
-		<th>email</th>
-		<th>Địa chỉ</th>
-		<th colspan="2">quản lý</th>
-	</tr>
-	<?php 
-		$IDarray = array();
-		while($infoCustomer = $result->fetch_assoc()){
-			echo "<tr>";
-			echo 	"<td><span>".$infoCustomer['username']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['passback']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['level']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['fullname']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['phone']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['email']."</span></td>";
-			echo 	"<td><span>".$infoCustomer['address']."</span></td>";
-			echo 	"<td><span ><a href='xulyadmin/xoakh.php?id=".$infoCustomer['id']."'/>Xóa</a></span></td>";
-			echo    "<td><button id='btn".$infoCustomer['id']."'>asd</td>";
-			$IDarray[$infoCustomer['id']] = array($infoCustomer['id']=>$infoCustomer['username']);
-			echo "</tr>";
-	}
-	 ?>
-	 <tr>
-	 	<td><div id="good"></div></td>
-	 	<td></td>
-	 	<td></td>
-	 	<td></td>
-	 	<td></td>
-	 	<td></td>
-	 	<td></td>
-	 	<td colspan="2"></td>
 
-	 </tr>
+?>
+<form action=""  method="POST">
+	<div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th>Tên TK</th>
+                        <th>Mật khẩu</th>
+                        <th>Mức tài khoản</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
+                        <th>email</th>
+                        <th>Địa chỉ</th>
+                        <th colspan="2">Quản lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+	<?php 
+		while($infoCustomer = $result->fetch_assoc()){ ?>
+			<tr>
+				<td><?php echo $infoCustomer['username'];?></td>
+				<td><?php echo $infoCustomer['passback'];?></td>
+				<td><?php echo $infoCustomer['level'];?></td>
+				<td><?php echo $infoCustomer['fullname'];?></td>
+				<td><?php echo $infoCustomer['phone'];?></td>
+				<td><?php echo $infoCustomer['email'];?></td>
+				<td><?php echo $infoCustomer['address'];?></td>
+				<td><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $infoCustomer['id'];?>">Cập nhật</button></td>	
+				<td><button class="btn btn-danger btn-lg"><a href="xulyadmin/xoakh.php?id=<?php echo $infoCustomer['id'];?>"/>Xóa</a></button></td>	
+			</tr>
+
+  <!-- Modal -->
+  				<div class="modal fade" id="myModal<?php echo $infoCustomer['id'];?>" role="dialog">
+  				  <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Cập nhật thông tin người dùng</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="xulyadmin/themKH.php" method="POST">
+                        <?php $current_url = base64_encode($_SERVER['REQUEST_URI']);?>
+                        <input type="hidden" name="return_url" value="<?php echo $current_url;?>" />
+                          <div class="form-group">
+                        <label for="usernameUpdate">Tên tài khoản</label>
+                        <input type="text" class="form-control" id="usernameUpdate" name="username" value="<?php  echo $infoCustomer['username']; ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="passUpdate">Mật khẩu</label>
+                        <input type="password" class="form-control" name="password" id="passUpdate"     value="<?php echo $infoCustomer['passback']; ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="fullname">Họ và tên</label>
+                        <input type="text" class="form-control" name="fullname" id="fullnameUpdate" value="<?php echo $infoCustomer['fullname'];?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $infoCustomer['phone'];?>" require>
+                      </div>
+                      <div class="form-group">
+                        <label for="emailUpdate">Email</label>
+                        <input type="email" class="form-control" name="email" id="emailUpdate" value="<?php  echo $infoCustomer['email'];?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="levelUpdate">Mức người dùng</label>
+                        <select name="level" class="form-control" id="levelUpdate">
+                          <option value="0">Người dùng</option>
+                          <option value="1">Admin</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="addressUpdate">Địa chỉ nhà</label>
+                        <textarea name="address" class="form-control " id="addressUpdate" rows="5"><?php echo  $infoCustomer['address'];?></textarea>
+                      </div>    
+                      <div class="form-group" align="center">
+                        <input type="submit" name="update" class="btn btn-info">
+                      </div>
+
+                    </form>
+               </div>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+              </div>
+              
+            </div>
+          </div>
+		<?php } ?>
+	 
+					 <tr>
+					 	<td><div id="good"></div></td>
+					 	<td></td>
+					 	<td></td>
+					 	<td></td>
+					 	<td></td>
+					 	<td></td>
+					 	<td></td>
+					 	<td colspan="2"></td>
+					 </tr>
+	 			</tbody>
+	 	
+
+	 
 	 
 </table>
 </form>
-<div id="gogo"></div>
-	 <button id='btn1'class='btn'  onclick="la()">Cập nhật</button>
-<script type="text/javascript">
-	/*
-		function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("gogo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "abc.txt", true);
-  xhttp.send();
-}
-
-
-$("button").click(function(e) {
-    e.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: "/pages/test/",
-        data: { 
-            id: $(this).val(), // < note use of 'this' here
-            access_token: $("#access_token").val() 
-        },
-        success: function(result) {
-            document.getElementById('gogo').value = 'lalalalal';
-        },
-        error: function(result) {
-            document.getElementById('gogo').value = 'lalalalal';
-        }
-    });
-});
-function loadUpdate(str){
-	document.addEventListener("DOMContentLoaded",function(str){
-		var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		      document.getElementById("good").innerHTML = this.responseText;
-		    }
-		  }
-		  xhttp.open("GET", "modules/left/capnhatnhanvien.php?call="+str, true);
-		  xhttp.send();
-	},false);
-   
-}*/
-
-function Update(str){
-	document.addEventListener("DOMContentLoaded",LoadValue(str),false)
-}
-
-function LoadValue(str){
-	document.getElementById("username").value = str;
-}
-function la(){
-	var lala = document.getElementById(btn1).name;
-	alert(lala);
-}
-
-</script>

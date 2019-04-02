@@ -2,6 +2,7 @@
 
 	$name = $_POST['username'];
 	$password = md5($_POST['password']);
+	$passback = $_POST['password'];
 	$fullname = $_POST['fullname'];
 	$email = $_POST['email'];
 	$phone = $_POST['phone'];
@@ -12,8 +13,8 @@
 	$conn = connect();
 	
 	// cần xử lý 
-	$sql = "insert into account(username,password,level) values"
-			."('$name','$password',$level)";
+	$sql = "insert into account(username,password,level,passback) values"
+			."('$name','$password',$level,'$passback')";
 	$conn->query($sql);
 
 	$sqlGetIDAccount = "select id from account where username = '$name'";

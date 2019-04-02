@@ -22,7 +22,7 @@
 	}
 	else if(isset($_POST['update'])){
 		$sqlUpdateProperties ="UPDATE account,khachhang 
-							SET fullname ='$fullname', username = '$username', password = '$pass',"
+							SET fullname ='$fullname', username = '$name', password = '$pass',"
 							."level=$level,email = '$email',passback='$passback',phone='$phone',address='$address'"
 							." WHERE username = '$name' and account.id = khachhang.idaccount";
 		$con->query($sqlUpdateProperties);

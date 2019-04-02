@@ -1,10 +1,10 @@
 <div>
     <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
-	<form action="xulyadmin/xulysp.php" method="post" enctype="multipart/form-data" onsubmit="return checkinfo()">
+	<form action="xulyadmin/xulysp.php" method="post" enctype="multipart/form-data" onsubmit="return checkinfo()"  class="form-group">
 		<table>
 			<tr>
 				<td><label>Mã sản phẩm: </label></td>
-				<td><input type="text" name="series" id="series" onchange="checkseries()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="series" id="series" onchange="checkseries()"></td>
 			</tr>
 			<tr id="rowseries">
 				<td></td>
@@ -13,7 +13,7 @@
 
 			<tr>
 				<td><label>Tên sản phẩm: </label></td>
-				<td><input type="text" name="name" id="name" onchange="checkname()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="name" id="name" onchange="checkname()"></td>
 			</tr>
 			<tr id="rowname">
 				<td></td>
@@ -22,7 +22,7 @@
 
 			<tr>
 				<td><label>Hình ảnh: </label></td>
-				<td><input type="file" name="picture" id="picture" onchange="checkpicture()"></td>
+				<td><input type="FILE" class="custom-file-input"  name="picture" id="picture" onchange="checkpicture()"></td>
 			</tr>
 			<tr id="rowpicture">
 				<td></td>
@@ -31,7 +31,7 @@
 
 			<tr>
 				<td><label>giá sản phẩm: </label></td>
-				<td><input type="text" name="price" id="price" onchange="checkprice()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="price" id="price" onchange="checkprice()"></td>
 			</tr>
 			<tr id="rowprice">
 				<td></td>
@@ -40,7 +40,7 @@
 
 			<tr>
 				<td><label>Loại sản phẩm: </label></td>
-				<td><input type="text" name="type" id="type" onchange="checktype()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="type" id="type" onchange="checktype()"></td>
 			</tr>
 			<tr id="rowtype">
 				<td></td>
@@ -49,7 +49,7 @@
 
 			<tr>
 				<td><label>Xuất xứ: </label></td>
-				<td><input type="text" name="origanal" id="origanal" onchange="checkoriganal()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="origanal" id="origanal" onchange="checkoriganal()"></td>
 			</tr>
 			<tr id="roworiganal">
 				<td></td>
@@ -58,7 +58,7 @@
 
 			<tr>
 				<td><label>Khối lượng: </label></td>
-				<td><input type="text" name="weight" id="weight" onchange="checkweight()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="weight" id="weight" onchange="checkweight()"></td>
 			</tr>
 			<tr id="rowweight">
         		<td ><span id="errweight"></span></td>
@@ -66,7 +66,7 @@
 
 			<tr>
 				<td><label>Đơn vị: </label></td>
-				<td><select name="unit" id="unit">
+				<td><select name="unit" id="unit" class="custom-select custom-select-lg mb-3">
 					<option value="Kg">kg</option>
 					<option value="Hộp">Hộp</option>
 				</select></td>
@@ -78,7 +78,6 @@
 			<tr>
 				<td colspan="2"><div style="text-align:center;">
                     <input type="submit" name="add" value="Thêm mới">
-                    <input type="submit" name="update" value="Cập nhật">
                 </div></td>
 			</tr>
 		</table>
@@ -86,6 +85,7 @@
             echo '<input type="hidden" name="return_url" value="'.$current_url.'" />';
         ?>
 	</form>
+    
 </div>
 <script type="text/javascript">
      var regexprice=/^[0-9]{1,12}$/;

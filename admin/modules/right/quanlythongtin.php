@@ -1,19 +1,19 @@
+ <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
  <form action="xulyadmin/themKH.php" method="post" onsubmit ="return checkinfo()">
-   <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
   <table>
     <tr>
       <div align="center"><h1>Thông tin thành viên</h1></div>
     </tr>
     <tr>
       <td><label>Tài khoản:</label></td>
-      <td><input type="text" name="username" id="username" onchange="checkuser()"></td>
+      <td><input class="form-control form-control-lg" type="text" name="username" id="username" onchange="checkuser()"></td>
     </tr>
     <tr id="rowus">
       <td ><span id="errus"></span></td>
     </tr>
     <tr>
       <td><label>Mật khẩu:</label></td>
-      <td><input type="password" name="password" id="password" onchange="checkmk1()"></td>
+      <td><input class="form-control form-control-lg" type="password" name="password" id="password" onchange="checkmk1()"></td>
     </tr>
     <tr id="rowpw">
       <td ><span id="errpw"></span></td>
@@ -21,7 +21,7 @@
 
      <tr>
       <td><label>Nhập Lại mật khẩu:</label></td>
-      <td><input type="password" name="confirm" id="confirm" onchange="checkmk2()"></td>
+      <td><input class="form-control form-control-lg" type="password" name="confirm" id="confirm" onchange="checkmk2()"></td>
     </tr>
     <tr id="rowcf">
       <td ><span id="errcf"></span></td>
@@ -29,21 +29,21 @@
     
      <tr>
       <td><label>Họ và tên:</label></td>
-      <td><input type="text" name="fullname" id="fullname" onchange="checktk()"></td>
+      <td><input class="form-control form-control-lg" type="text" name="fullname" id="fullname" onchange="checktk()"></td>
     </tr>
     <tr id="rowfn">
       <td ><span id="errfn"></span></td>
     </tr>
     <tr>
-      <td><label>Họ và tên:</label></td>
+      <td><label>Mức tài khoản:</label></td>
       <td><select name="level">
-          <option value="0">0</option>
-          <option value="1">1</option>
+          <option value="0">Người thường</option>
+          <option value="1">Admin</option>
       </select></td>
     </tr>
      <tr>
       <td><label>email:</label></td>
-      <td><input type="email" name="email" id="email" onchange="checktk()"></td>
+      <td><input class="form-control form-control-lg" type="email" name="email" id="email" onchange="checktk()"></td>
     </tr>
     <tr id="rowus">
       <td ><span id="errus"></span></td>
@@ -51,25 +51,24 @@
 
     <tr>
       <td><label>Số điện thoại:</label></td>
-      <td><input type="text" name="phone" id="phone" onchange="checkphone()"></td>
+      <td><input class="form-control form-control-lg" type="text" name="phone" id="phone" onchange="checkphone()"></td>
     </tr>
     <tr id="rowp">
       <td ><span id="errp"></span></td>
     </tr>
     <tr>
       <td><label>Địa chỉ</label></td>
-      <td><textarea name="address" id="address" onchange="checkadress()"></textarea></td>
+      <td><textarea class="form-control form-control-lg" name="address" id="address" onchange="checkadress()"></textarea></td>
     </tr>
     <tr id="rowad">
       <td ><span id="errad"></span></td>
     </tr>
     <?php echo '<input type="hidden" name="return_url" value="'.$current_url.'" />'; ?>
-    <td><div align="center">
+    <td colspan="2"><div align="center">
         <input type="submit" name="add" value="Thêm mới">
-        <input type="submit" name="update" value="Cập nhật">
     </div></td>
   </table>
-</form>
+</form> 
 <script>
         var a,b,c,d;
         var regextk=/^[A-Za-z][A-Za-z0-9]{4,14}$/;

@@ -1,6 +1,6 @@
 <div class="footer">
-	<div class="poopular">
-		<h3>San pham xem nhieu</h3>
+	<div class="popular">
+		<h3 id='po'>Gợi ý sản phẩm</h3>
 		<?php 
 			include_once('C:xampp/htdocs/ban_hang/xuly/connection.php');
 			$result = connectTakeQuery("select * from product order by views DESC");
@@ -9,10 +9,10 @@
 				$row  = $result->fetch_assoc();
 				echo "<div class='sanphamall'>"				
 				."	<img src='".$row['picture']."'>
-					<p>".$row['name']."</p>
-					<p style='color: red;'>".$row['price']."VNĐ</p>
-					<a href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."'>Chi tiết</a><br>
-					<a href='xuly/xulygiohang.php?id=".$row['id']."'>Thêm vào giỏ hàng </a>
+					<a href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."'><p>".$row['name']."</p></a>
+					<p style='color: red;'>".number_format($row['price'])."VNĐ</p>
+					
+					<a href='xuly/xulygiohang.php?id=".$row['id']."' id='addtocart'>Thêm vào giỏ hàng </a>
 				</div>";
 			}
 		 ?>
@@ -33,4 +33,3 @@
 			</tr>
 		</table>
 	</div>
-</div>

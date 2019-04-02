@@ -6,7 +6,7 @@
     </tr>
     <tr>
       <td><label>Tên tài khoản:</label></td>
-      <td><input type="text" name="username" id="username" onchange="checktk()"></td>
+      <td><input type="text" class="form-control" name="username" id="username" onchange="checktk()"></td>
     </tr>
     <tr id="rowus" class="error">
       <td></td>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td><label>Mật khẩu:</label></td>
-      <td><input type="password" name="password" id="password" onchange="checkmk1()"></td>
+      <td><input type="password" class="form-control" name="password" id="password" onchange="checkmk1()"></td>
     </tr>
     <tr id="rowpw" class="error">
       <td></td>
@@ -23,7 +23,7 @@
 
      <tr>
       <td><label>Nhập Lại mật khẩu:</label></td>
-      <td><input type="password" name="confirm" id="confirm" onchange="checkmk2()"></td>
+      <td><input type="password" class="form-control" name="confirm" id="confirm" onchange="checkmk2()"></td>
     </tr>
     <tr id="rowcf" class="error">
       <td></td>
@@ -32,7 +32,7 @@
     
      <tr>
       <td><label>Họ và tên:</label></td>
-      <td><input type="text" name="fullname" id="fullname" onchange="checktk()"></td>
+      <td><input type="text" class="form-control" name="fullname" id="fullname" onchange="checktk()"></td>
     </tr>
     <tr id="rowfn" class="error">
       <td></td>
@@ -41,7 +41,7 @@
 
      <tr>
       <td><label>email:</label></td>
-      <td><input type="email" name="email" id="email" onchange="checktk()"></td>
+      <td><input type="email" class="form-control" name="email" id="email" onchange="checkemail()"></td>
     </tr>
     <tr id="rowus" class="error">
       <td></td>
@@ -50,7 +50,7 @@
 
     <tr>
       <td><label>Số điện thoại:</label></td>
-      <td><input type="text" name="phone" id="phone" onchange="checkphone()"></td>
+      <td><input type="text" class="form-control" name="phone" id="phone" onchange="checkphone()"></td>
     </tr>
     <tr id="rowp" class="error">
       <td></td>
@@ -58,7 +58,7 @@
     </tr>
     <tr>
       <td><label>Địa chỉ</label></td>
-      <td><textarea name="address" id="address" onchange="checkadress()" rows="5" cols="50" style="resize: none;"></textarea></td>
+      <td><textarea name="address" class="form-control" id="address" onchange="checkadress()" rows="5" cols="50" style="resize: none;"></textarea></td>
     </tr>
     <tr id="rowad" class="error">
       <td></td>

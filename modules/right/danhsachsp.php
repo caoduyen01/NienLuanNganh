@@ -30,11 +30,11 @@ function sanpham($idcate,$isHave){
 	}
 	while($row = $product->fetch_assoc()){
 		echo "<div class='sanphamall'>"				
-				."	<img src='".$row['picture']."'>
-					<p>".$row['name']."</p>
-					<p style='color: red;'>".$row['price']."đ</p>
-					<a href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."'>Chi tiết</a><br>
-					<a href='xuly/xulygiohang.php?id=".$row['id']."'>Thêm vào giỏ hàng </a>
+				."	<a id='detail' href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."' ><img src='".$row['picture']."'></a>
+					<a id='detail' href='/ban_hang/index.php?xem=chitietsanpham&id=".$row['id']."' ><p>".$row['name']."</p></a>
+					<p style='color: red;'>".number_format($row['price'])." VNĐ</p>
+					
+					<a href='xuly/xulygiohang.php?id=".$row['id']."' id='addtocart'>Thêm vào giỏ hàng </a>
 				</div>";
 	}
 echo '<div class="page">';

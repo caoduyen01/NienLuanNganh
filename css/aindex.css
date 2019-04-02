@@ -1,17 +1,68 @@
 *{
   margin: 0px;
   padding: 0px;
+  background-color:#F5F5F5;
 }
-
+body{
+  padding: 5px;
+}
 .header{
+  background: #FFCC99;
+}
+.header li {
+  list-style-type: none;
+}
+.header p,h1{
+  background: #FFCC99;
+}
+.header a{
+  float: right;
+  width: 100%;
+  text-align: right;
+  background: #66FF33;
+  color: white;
+  line-height: 2;
+  font-size: 16px;
+  padding: 0 10px;
+}
+.header img{
+  width: 15%;
+  float: left;
+  margin: 20px 5px;
+}
+.header .logan{
+  display: inline-block;
+  margin: 20px;
+  padding: 0.2em;
+  font-size: 30px;
+  text-align: left;
+  background: #FFCC99;
+}
+.form-inline{
+  float: right;
+  width: 20%;
+  padding-top: 7em;
+  background: #FFCC99;
+  margin-right: em;
+}
+#manage{
   text-align: center;
+  background: #66FF33;
+  line-height: 2;
+  font-weight: bold,;
+  color:black;
+  font-size: 50px;
+  margin:0;
+  text-shadow: 2px 6px 3px white;
 }
 .footer{
   text-align: center;
+  background: #66FF33;;
 }
 .menu {
- width: 90%;
+ width: 99%;
   margin: 10px auto;
+  font:Time news roman, serif,san serif, arial;
 }
 .menu li{
   list-style-type: none;
@@ -20,10 +71,32 @@
   background: blue;
   line-height: 2;
   text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
   font:  Helvetica, arial, serif, sans serif;
   border-radius: 10px;
   box-shadow: 3px 5px 2px;
   border:2px solid white; 
+}
+.control .chon{
+  display: none;
+  position: absolute;
+  top:40;
+  padding:0px;
+  width:auto; 
+  font:arial,serif,san serif, ;
+
+}
+
+.chon li{
+  width:auto;
+  padding:5px;
+  margin-top:5px;
+  display: block;
+  font: Times New Roman;
+}
+.control li:hover .chon{
+  display: block;
 }
 .menu li a{
   text-decoration: none;
@@ -35,30 +108,15 @@
   margin: 10px auto;
   height: 1000px;
 }
-.aleft{
-  width: 100%;
-  float: left;
- 
+.aleft a{
+  color: white;
+  padding: 0.5em;
 }
-.aleft table{
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
-  caption-side: top;
-}
-.row-title-product{
-  background: red;
-}
-.aleft table td,th{
-   border: 1px solid black;
-   padding: 5px;
-}
-
 .aright table{
-  width: 50%;
+  width: 30%;
   table-layout: auto;
-  margin: 0px auto;
-  font-size: 20px
+  margin: 2em auto;
+  font-size: 20px;
 }
 .aright form table td{
   padding-bottom: 5px;
@@ -81,4 +139,7 @@
 }
 .aright form table textarea{
   width:200px;
+}
+.footer{
+  clear: both;
 }

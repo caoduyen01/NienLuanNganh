@@ -1,5 +1,7 @@
 <div class="content">
-				<?php 
+
+				<?php
+					include_once("xuly/connection.php"); 
 					if(isset($_GET['xem'])){
 						$tam = $_GET['xem'];
 					}else{
@@ -14,8 +16,7 @@
 							sanpham(0,false);
 						}
 						else{
-							include_once("xuly/connection.php");
-							$getType = ConnectTakeQuery("select * from category");
+							$getType = connectTakeQuery("select * from category");
 							while($type = $getType->fetch_assoc() ){
 								if($loai == $type['id']){
 									sanpham($loai,true);

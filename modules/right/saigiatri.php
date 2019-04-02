@@ -1,10 +1,14 @@
 <?php 
 	// tao connection 
 	include_once "../../xuly/connection.php";
-	$sql = "select * from account where username = 'ajshgdhjahj'";
-	$result = connectTakeQuery($sql);
-	$count = $result->num_rows;
-	if($count !=1){
-		echo "Không tồn tại tên đăng nhập";
+	$name = $_POST['name'];
+	$pass = md5($_POST['pass']);
+	$sql = "select * from account where username = '$name' and password ='$pass' ";
+	$count = CountRowDb($sql);
+	if($count >0){
+		echo "Đăng nhập thành công";
+	}
+	else {
+		echo "Sai tài khoản hoặc mật khẩu";
 	}
  ?>
