@@ -1,5 +1,5 @@
  <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
- <form action="xulyadmin/themKH.php" method="post" onsubmit ="return checkinfo()">
+ <form action="xulyadmin/themKH.php" method="post" onsubmit ="return checkinfo()" autocomplete="off">
   <table>
     <tr>
       <div align="center"><h1>Thông tin thành viên</h1></div>

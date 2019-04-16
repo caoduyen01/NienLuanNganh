@@ -4,7 +4,7 @@
 			<ul class="login">
 				
 					<?php
-					echo '<li id="giohang"> <a href="index.php?xem=giohang"  ><img src="anhnen/icon/giohang.png" ></a></li>';
+					echo '<li id="giohang"><i><a href="index.php?xem=giohang"  ><img src="anhnen/icon/giohang.png" ></a></i></li>';
 
 					if(!isset($_SESSION['name'])){
 						$name = '';
@@ -15,7 +15,7 @@
 
 					if($name == ''){
 						echo "<li><a href='/ban_hang/modules/right/Dangnhap.php'>Đăng nhập </a></li>";
-						echo '<li><a href="index.php?xem=dangky">Đăng ký </a></li>';
+						echo "<li><a href='index.php?xem=dangky'>Đăng ký </a></li>";
 					}
 					else{
 						echo "<li>";
@@ -49,7 +49,7 @@
 				<p>Mang Ẩm thực An Giang đến với bạn!</p>
 				<p>  &nbsp;</p>
 			</div>
-			<form action="/ban_hang/index.php?xem=timkiem" method="GET">
+			<form action="modules/right/hienthisp.php" method="POST">
 				<tr>
 					<td><input type="index" name="search" placeholder="Tìm kiếm" id="search"></td>
 					<td><input type="submit" name="submit" value="Tìm"></button></td>

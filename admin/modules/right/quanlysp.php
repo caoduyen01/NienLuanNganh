@@ -1,10 +1,10 @@
 <div>
     <?php $current_url = base64_encode($_SERVER['REQUEST_URI']); ?>
-	<form action="xulyadmin/xulysp.php" method="post" enctype="multipart/form-data" onsubmit="return checkinfo()"  class="form-group">
+	<form action="xulyadmin/xulysp.php" method="post" enctype="multipart/form-data" onsubmit="return checkinfo()"  class="form-group" autocomplete="off">
 		<table>
 			<tr>
 				<td><label>Mã sản phẩm: </label></td>
-				<td><input class="form-control form-control-lg" type="text" name="series" id="series" onchange="checkseries()"></td>
+				<td><input class="form-control form-control-lg" type="text" name="series" id="series" onchange="checkseries()" onkeyup="ajaxCheckSeries(this.value)"></td>
 			</tr>
 			<tr id="rowseries">
 				<td></td>
@@ -85,7 +85,6 @@
             echo '<input type="hidden" name="return_url" value="'.$current_url.'" />';
         ?>
 	</form>
-    
 </div>
 <script type="text/javascript">
      var regexprice=/^[0-9]{1,12}$/;
@@ -216,4 +215,27 @@
                 return true;
             }
         }
+        function ajaxCheckSeries(series){
+            var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var check = this.responseText;
+                 if ( check != '0'  )
+                    { 
+                        document.getElementById('rowseries').style.visibility='visible';
+                        document.getElementById('errseries').innerHTML='có mã sản phẩm trong rồi';
+                        return false;
+                    }
+                 else
+                    {
+                        document.getElementById('rowseries').style.visibility='collapse';
+                        document.getElementById('errseries').innerHTML='';
+                        return true;
+                    }
+                
+              };              
+            }
+             xhttp.open("GET", "/ban_hang/admin/xulyadmin/AjaxKTSeries.php?series="+series, true);
+            xhttp.send();
+    }
 </script>

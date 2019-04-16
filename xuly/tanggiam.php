@@ -4,7 +4,7 @@
 	$id = isset($_GET['idCart'])?$_GET['idCart']:0;
 	$upDown = isset($_GET['updateCart'])?$_GET['updateCart']:0;
 	$ishaveAccount = isset($_GET['ishaveAccount'])?$_GET['ishaveAccount']:0;
-	if($ishaveAccount == true){
+	if($ishaveAccount == 'true'){
 			if($upDown == 0){
 			$sql = "update cart set amount = amount +1 where idproduct = $id ";
 
@@ -19,7 +19,7 @@
 		$con->query($sql);
 		$con->close();
 	}
-	else if($ishaveAccount == false){
+	else if($ishaveAccount == 'false'){
 			if($upDown == 0){
 				$_SESSION['cart'][$id]['qty'] += 1;
 				echo "tăng gio hang thành công";

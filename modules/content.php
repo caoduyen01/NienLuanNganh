@@ -40,6 +40,9 @@
 					else if($tam == 'capnhatthongtinnguoidung' ){
 						include "modules/right/capnhatthongtin.php";
 					}
+					else if($tam == 'timkiem' ){
+						include "modules/right/hienthisp.php";
+					}
 					else{
 						include "modules/right/danhsachsp.php";
 					}

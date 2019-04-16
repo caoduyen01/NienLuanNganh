@@ -1,12 +1,12 @@
 <div class="register">
- <form action="xuly/xulydangky.php" method="post" onsubmit ="return checkinfo()">
+ <form action="xuly/xulydangky.php" method="post" onsubmit ="return checkinfo()" autocomplete="off">
   <table>
     <tr>
       <div align="center"><h1>Đăng ký</h1></div>
     </tr>
     <tr>
       <td><label>Tên tài khoản:</label></td>
-      <td><input type="text" class="form-control" name="username" id="username" onchange="checktk()"></td>
+      <td><input type="text" class="form-control" name="username" id="username" onchange="checktk();checkdouble(this.value)"></td>
     </tr>
     <tr id="rowus" class="error">
       <td></td>
@@ -43,9 +43,9 @@
       <td><label>email:</label></td>
       <td><input type="email" class="form-control" name="email" id="email" onchange="checkemail()"></td>
     </tr>
-    <tr id="rowus" class="error">
+    <tr id="rowem" class="error">
       <td></td>
-      <td ><span id="errus" ></span></td>
+      <td ><span id="errem" ></span></td>
     </tr>
 
     <tr>
@@ -58,18 +58,18 @@
     </tr>
     <tr>
       <td><label>Địa chỉ</label></td>
-      <td><textarea name="address" class="form-control" id="address" onchange="checkadress()" rows="5" cols="50" style="resize: none;"></textarea></td>
+      <td><textarea name="address" class="form-control" id="address" onchange="checkadress()" rows="5"  style="resize: none;"></textarea></td>
     </tr>
     <tr id="rowad" class="error">
       <td></td>
       <td ><span id="errad"></span></td>
     </tr>
-    <td colspan="2"><div align="center"><input type="submit" name="submit" value="Đăng ký"></div></td>
+    <td colspan="2"><div align="center"><input type="submit" name="submit" value="Đăng ký" style="margin-top:20px; "></div></td>
   </table>
 </form>
 </div>
 <script>
-        var a,b,c,d;
+        var a,b,c,d,e,f;
         var regextk=/^[A-Za-z][A-Za-z0-9]{4,14}$/;
         var regexmk=/^[A-Za-z0-9]{6,15}$/;
         var regexphone=/^[0-9]{10,11}$/;
@@ -80,8 +80,9 @@
             c = checkmk2();
             d = checkphone();
             e = checkadress();
+            f = checkemail(); 
 
-            if ( !a ||!c || !b || !d || !e) {
+            if ( !a ||!c || !b || !d || !e ||!f) {
                 return false;
             }
         }
@@ -99,6 +100,26 @@
                 document.getElementById("errus").innerHTML="";
                 return true;
             }
+
+            
+        }
+        function checkdouble(name){
+          var xhttp = new XMLHttpRequest();
+             xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var check =this.responseText;
+
+                if (check == '1')
+                  {
+                      document.getElementById('rowus').style.visibility='visible';
+                      document.getElementById('errus').innerHTML='Tồn tại tên tài khoản';
+                      return false;
+                  }
+                    }
+              };              
+            xhttp.open("POST", "/ban_hang/modules/right/AjaxCheckUserName.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name="+name);
         }
           function checkmk1() {
             var pass1 = document.getElementById('password').value;
@@ -115,6 +136,7 @@
                 return true;
             }
         }
+        
         function checkmk2() {
             var pass1 = document.getElementById('password').value;
             var pass2 = document.getElementById('confirm').value;
@@ -122,6 +144,12 @@
             {
                 document.getElementById('rowcf').style.visibility='visible';
                 document.getElementById('errcf').innerHTML='Mật khẩu không khớp';
+                return false;
+            }
+            else if (pass2 == '')
+            {
+                document.getElementById('rowcf').style.visibility='visible';
+                document.getElementById('errcf').innerHTML='Nhập lại không được rỗng';
                 return false;
             }
             else
@@ -143,6 +171,21 @@
             {
                 document.getElementById('rowp').style.visibility='collapse';
                 document.getElementById('errp').innerHTML='';
+                return true;
+            }
+        }
+        function checkemail() {
+            var email = document.getElementById('email').value;
+            if (email == '')
+            { 
+                document.getElementById('rowem').style.visibility='visible';
+                document.getElementById('errem').innerHTML='email không được trống';
+                return false;
+            }
+            else
+            {
+                document.getElementById('rowem').style.visibility='collapse';
+                document.getElementById('errem').innerHTML='';
                 return true;
             }
         }

@@ -19,6 +19,7 @@
 	 ?>
 	<div class="wrap">
 		<?php 
+		include ("xuly/connection.php");
 			include_once("modules/header.php");
 			include_once("modules/menu.php");
 			include_once("modules/content.php");

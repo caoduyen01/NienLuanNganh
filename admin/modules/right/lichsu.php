@@ -1,24 +1,29 @@
 <div class="total"  class="col-xs-12">
-	<form action="" method="POST">
+	<form action="" method="POST" autocomplete="off">
 		<label for="day">Ngày</label>
 		<select name="day"  class="custom-select" id="day">
-			<?php 
-			while ( $day<= 31) {
-				echo "<option value='".$day."'>".$day."</option>";
-				$day++;
-			} ?>
+			<option selected value="1">1</option>
+			  <?php 
+			  		for ($i=2; $i <=31 ; $i++) { 
+			  			echo "<option values='$i'>$i</option>";
+			  		}
+			   ?>
 		</select>
 		<label for="month">Tháng</label>
 		<select name="month"  class="custom-select" id="month">
-			<?php 
-			while ( $mon<= 12) {
-				echo "<option value='".$mon."'>".$mon."</option>";
-				$mon++;
-			} 
-			?>
+			<option selected value="1">1</option>
+			  <?php 
+			  		for ($i=2; $i <=12 ; $i++) { 
+			  			echo "<option values='$i'>$i</option>";
+			  		}
+			  			
+			  		
+			   ?>
 		</select>
-		<input type="text" name="year" class="form-group" placeholder="Năm">
-		<input type="text" name="id" class="form-group" placeholder="ID">
+		<label for="year">Năm</label>
+		<input type="text" id="year" name="year" class="form-group" placeholder="<?php $date = getdate(); echo $date['year']; ?>">
+		<label for="idproduct">ID sản phẩm</label>
+		<input type="text" id="idproduct" name="id" class="form-group" placeholder="ID">
 		<input type="hidden" id="result" value="">
 		<input type="submit" name="choose">
 	</form>
@@ -30,13 +35,23 @@
 		$time =  $year."-".$month."-".$day;
 		function ShowTotal(){
 			//nếu giá trị của time bằng rỗng thì lấy hết còn không thì lấy theo giá trị đó 
-			include_once("C:/xampp/htdocs/ban_hang/xuly/connection.php");
 			GLOBAL $time;
 			GLOBAL $id;
-			$sql ="select * from logproduct where datechange <= '$time' and idproduct = $id ORDER BY datechange DESC";
-			$count = CountRowDb($sql);
-			if ($count >0) {
-				$total = connectTakeQuery($sql);
+			$sql ="select * from logproduct where datechange <= '$time' and idproduct = $id ORDER BY datechange DESC";			
+			try{  
+
+				$count = CountRowDb($sql);
+				}catch(Exception $e){
+				    echo 'failed';
+				}
+			if ( $count == 0) {
+				echo "<tr><td>Không có sản phẩm</td></tr>";
+				return null;
+			}
+			else{
+
+					
+					$total = connectTakeQuery($sql);
 			while($values=$total->fetch_assoc()){
 					echo "<tr>";
 					echo 	"<td>".$values['id']."</td>";
@@ -47,9 +62,6 @@
 					echo 	"<td>".$values['idproduct']."</td>";
 					echo "</tr>";
 				}
-			}
-			else{
-
 			}
 		}
 	 ?>
@@ -66,6 +78,7 @@
 		</thead>
 		<tbody>
 			<?php
+							$con = include_once("C:/xampp/htdocs/ban_hang/xuly/connection.php"); 
 					ShowTotal();
 			?>
 			

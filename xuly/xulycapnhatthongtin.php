@@ -31,5 +31,6 @@ session_start();
           $con->close;
         }
       }
+      
  		header( "Location: /ban_hang/index.php?xem=capnhatthongtinnguoidung" );
  ?>

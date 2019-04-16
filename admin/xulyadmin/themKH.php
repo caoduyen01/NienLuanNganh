@@ -16,15 +16,15 @@
 		$sqlGetId = "select * from account where username = '$name' ";
 		$result = connectTakeQuery($sqlGetId);
 		$properties = $result->fetch_assoc();
-		$sqlAddproperties = "insert into khachhang(fullname,phone,email,address,idaccount) values ('$fullname','$phone','$email','$address',".$properties['id'].")";
+		$sqlAddproperties = "insert into customer(fullname,phone,email,address,idaccount) values ('$fullname','$phone','$email','$address',".$properties['id'].")";
 		$con->query($sqlAddproperties);
 		$con->close();
 	}
 	else if(isset($_POST['update'])){
-		$sqlUpdateProperties ="UPDATE account,khachhang 
+		$sqlUpdateProperties ="UPDATE account,customer 
 							SET fullname ='$fullname', username = '$name', password = '$pass',"
 							."level=$level,email = '$email',passback='$passback',phone='$phone',address='$address'"
-							." WHERE username = '$name' and account.id = khachhang.idaccount";
+							." WHERE username = '$name' and account.id = customer.idaccount";
 		$con->query($sqlUpdateProperties);
 		$con->close();
 	}

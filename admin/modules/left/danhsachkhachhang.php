@@ -1,9 +1,8 @@
 <?php 
-		require_once "C:/xampp/htdocs/ban_hang/xuly/connection.php";
 		$sql = "SELECT account.id as 'id',account.username as 'username' ,account.passback as 'passback',"
-			  ."account.level as 'level',khachhang.fullname as 'fullname',"
-			  ."khachhang.phone as 'phone',khachhang.email as 'email',khachhang.address as 'address'"
-			  ." FROM account,khachhang where account.id = khachhang.idaccount ";
+			  ."account.level as 'level',customer.fullname as 'fullname',"
+			  ."customer.phone as 'phone',customer.email as 'email',customer.address as 'address'"
+			  ." FROM account,customer where account.id = customer.idaccount ";
 		$result = connectTakeQuery($sql);
 
 ?>

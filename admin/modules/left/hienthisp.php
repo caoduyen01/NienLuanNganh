@@ -1,7 +1,6 @@
 
 	<?php 
-		require_once "C:/xampp/htdocs/ban_hang/xuly/connection.php";
-		$sql = "SELECT product.id as 'id' ,properties.series as 'ma',product.name as 'ten',product.price as 'gia',category.name as 'loai',properties.xuatxu as 'xuatxu',properties.khoiluong as 'khoiluong',properties.donvi as 'donvi' FROM product,properties,category where product.idcategrory = category.id and product.idproperties = properties.id ";
+		$sql = "SELECT product.id as 'id' ,product.picture as 'hinhanh' ,properties.series as 'ma',product.name as 'ten',product.price as 'gia',category.name as 'loai',properties.xuatxu as 'xuatxu',properties.khoiluong as 'khoiluong',properties.donvi as 'donvi' FROM product,properties,category where product.idcategrory = category.id and product.idproperties = properties.id ";
 		$result = connectTakeQuery($sql);
 	 ?>
 		<div class="col-xs-11">
@@ -10,6 +9,7 @@
                     <tr>
                     	<th>Mã</th>
                         <th>Tên</th>
+                        <th>Hình ảnh</th>
                         <th>Giá</th>
                         <th>Xuất xứ</th>
                         <th>Khối Lượng</th>
@@ -23,6 +23,7 @@
 			<tr>
 				<td><?php echo $product['ma'];?></td>
 				<td><?php echo $product['ten'];?></td>
+        <td><img src="<?php echo '/ban_hang/'.$product['hinhanh'];?>"></td>
 				<td><?php echo $product['gia'];?></td>
 				<td><?php echo $product['xuatxu'];?></td>
 				<td><?php echo $product['khoiluong'];?></td>
@@ -46,15 +47,15 @@
                         <input type="hidden" name="return_url" value="<?php echo $current_url;?>" />
                           <div class="form-group">
                         <label for="seriesProduct">Mã sản phẩm</label>
-                        <input type="text" class="form-control" id="series" name="series" value="<?php  echo $product['ma']; ?>">
+                        <input type="text" class="form-control" id="series" name="series" value="<?php  echo $product['ma']; ?>" disabled>
                       </div>
                       <div class="form-group">
                         <label for="nameProduct">Tên sản phẩm</label>
                         <input type="text" class="form-control" name="name" id="nameProduct" value="<?php echo $product['ten']; ?>">
                       </div>
                       <div class="form-group">
-                        <label for="picturePd">Hình Ảnh sản phẩm</label>
-                        <input type="file" class="form-control-file" name='picture' id="picturePd">
+                        <label for="picturePd">Hình ảnh sản phẩm</label>
+                        <input type="FILE" class="form-control-file" name='picture' id="picturePd">
                       </div>
                       <div class="form-group">
                         <label for="priceProduct">Giá sản phẩm</label>

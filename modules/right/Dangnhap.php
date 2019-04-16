@@ -28,7 +28,7 @@ function CheckAccfault(){
 	</script>
 </head>
 <body> 
-	<form name="myform" action="/ban_hang/xuly/xulydangnhap.php" method="post">
+	<form name="myform" action="/ban_hang/xuly/xulydangnhap.php" method="post" autocomplete="off">
 		<h1>Đăng nhập</h1>
 		<input placeholder="Username" type="text" name="username" required></td>
 		<input placeholder="Password" type="password" name="password" required></td>

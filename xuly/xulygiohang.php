@@ -40,6 +40,7 @@
 			}
 		}
 	}
+	$url =  isset($_SESSION['url']['index'])?base64_decode($_SESSION['url']['index']):"";
 	//echo array_key_exists($sanpham, $listproduct);
-	header("Location:/ban_hang/index.php?xem=giohang");
+	header("Location:".$url."?xem=giohang");
  ?>

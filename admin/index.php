@@ -1,7 +1,7 @@
 <?php 
 	session_start();
-	include_once("C:/xampp/htdocs/ban_hang/xuly/connection.php");
-	 $url =  isset($_SESSION['url']['index'])?base64_decode($_SESSION['url']['index']):"/ban_hang/index.php";
+	include "C:/xampp/htdocs/ban_hang/xuly/connection.php";
+	 $url =  isset($_SESSION['url']['index'])?base64_decode($_SESSION['url']['index']):"../index.php";
 	if(isset($_SESSION['name'])){
 		$sql = "select * from account where username='".$_SESSION['name']."'";
 		$query = connectTakeQuery($sql);
@@ -15,8 +15,6 @@
 	else{
 		header("Location:".$url);
 	}
-
-
 ?>
 <!DOCTYPE html>
 <html>

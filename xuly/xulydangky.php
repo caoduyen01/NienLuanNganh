@@ -20,7 +20,7 @@
 	$sqlGetIDAccount = "select id from account where username = '$name'";
 	$account = connectTakeQuery($sqlGetIDAccount);
 	$IdAccount = $account->fetch_assoc();
-	$sqlAddKH = "insert into khachhang(fullname,phone,email,address,idaccount) values"
+	$sqlAddKH = "insert into customer(fullname,phone,email,address,idaccount) values"
 			."('$fullname','$phone','$email','$address',".$IdAccount['id'].")";
 	$conn->query($sqlAddKH);
 	$conn->close();
